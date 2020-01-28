@@ -23,7 +23,7 @@
     #sceneViewDiv,
     #mapViewDiv {
       position: absolute;
-      transition: 3000ms cubic-bezier(0.23, 1, 0.32, 1) 0ms opacity;
+      transition: 2000ms cubic-bezier(0.23, 1, 0.32, 1) 0ms opacity;
     }
 
     #sceneViewDiv.switch-on,
@@ -113,7 +113,10 @@
         });
         const basemapWidget = new BasemapToggle({
           view: view,  
-          nextBasemap: 'streets-navigation-vector',
+          nextBasemap: 'topo-vector',
+          //"streets", "satellite", "hybrid", "terrain", "topo", "gray", "dark-gray", "oceans", 
+          //"national-geographic", "osm", "dark-gray-vector", "gray-vector", "streets-vector", 
+          //"topo-vector", "streets-night-vector", "streets-relief-vector", "streets-navigation-vector"
           graphic: new Graphic({
           symbol: { type: "simple-marker" }  
           })
@@ -174,7 +177,6 @@
         newView.extent = oldView.extent;
 
         if (newView === sceneView) {
-        //   addWidgets(sceneView);
           newView.goTo({
               rotation: oldView.rotation,
               tilt: 0
@@ -196,6 +198,7 @@
                 speedFactor: 0.5
               })
             .then(function () {
+              animateOpacity(newView, oldView);
               newView.rotation = 360 - oldView.camera.heading;
             });
         }
@@ -208,6 +211,7 @@
         oldView.container.classList.remove("switch-on");
         oldView.container.classList.add("switch-off");
       }
+
 
       splashContent = "Welcome to the official website for the West Coast Civil Defence & Emergency Management (CDEM) Group Tsunami Evacuation Zones geospatial viewer. West Coast CDEM Group does not warrant its accuracy and disclaims all liability whatsoever for any error, inaccuracy or incompleteness of the information. No person should rely on any information within this viewer without seeking independent and professional advice.<br/><br/>"+
       "The following terms along with the disclaimer and privacy policy serve as the agreement governing the visitors use of this website that may also be referred to as ‘the site’. The parties to this agreement include and are limited to the West Coast Civil Defence & Emergency Management Group which we may refer to as “we” or “us” or “our” and the visitor to the site, who we may refer to as ‘you’.<br/><br/>"+
