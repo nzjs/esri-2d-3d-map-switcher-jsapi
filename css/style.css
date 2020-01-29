@@ -67,3 +67,23 @@ body,
     font-size: 1.3em;
 }
 
+.dijitDialogPaneActionBar {
+    float: right;
+}
+
+.dijitButton {
+    background: #eee;
+    border: 1px solid #000;
+    color: #000 !important;
+    font-weight: normal;
+    text-shadow: none !important;
+    height: auto;
+    padding: 5px 10px;
+    margin-left: 5px;
+    width: 10em;
+}
+
+.dijitToggleButtonIconChar, .dijitOffScreen {
+    display: none;
+}
+
